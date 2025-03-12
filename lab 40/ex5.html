@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating New Elements Using createElement and appendChild</title>
+</head>
+<body>
+    <h1>Creating New Elements Using createElement and appendChild</h1>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+    <button onclick="addItem()">Add Item</button>
+    <script>
+        function addItem() {
+            let newItem = document.createElement("li");
+            newItem.innerText = "New Item";
+            document.getElementById("list").appendChild(newItem);
+        }
+    </script>
+</body>
+</html>

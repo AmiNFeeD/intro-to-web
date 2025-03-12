@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Press Event</title>
+</head>
+<body>
+    <h1>Key Press Event</h1>
+    <input type="text" onkeydown="showKey(event)" placeholder="Type something...">
+    <p id="output">Press any key...</p>
+    <script>
+        function showKey(event) {
+            document.getElementById("output").innerText = "Last Pressed Key: " + event.key;
+        }
+    </script>
+</body>
+</html>

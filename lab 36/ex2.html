@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Local vs Global Scope</title>
+</head>
+<body>
+
+    <h1>Local vs Global Scope !</h1>
+
+    <script>
+        let message = "Hello from global";
+        function helloGlobal() {
+          console.log(message);
+        }
+        helloGlobal();
+        function helloGlobal() {
+            let message = "Hello from function scope";
+            console.log(message);
+        }
+        helloGlobal();
+        function helloGlobal() {
+            let localMessage = "Hello from function scope";
+            console.log(localMessage);
+        }
+        helloGlobal();
+        console.log(localMessage);
+    </script>
+
+</body>
+</html>

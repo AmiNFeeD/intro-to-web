@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Multiple Events with addEventListener</title>
+</head>
+<body>
+    <h1>Adding Multiple Events with addEventListener</h1>
+    <button id = "evenBin">Click or Hover</button>
+    <script>
+        let button = document.getElementById('evenBin');
+
+        button.addEventListener('click', function () {
+            button.style.background = 'red';
+        });
+        button.addEventListener('mouseover', function () {
+            button.style.background = 'green';
+        });
+        button.addEventListener('mouseout', function () {
+            button.style.background = '';
+        });
+    </script>
+</body>
+</html>

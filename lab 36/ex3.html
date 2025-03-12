@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Block Scope with let & const</title>
+</head>
+<body>
+
+    <h1> Block Scope with let & const !</h1>
+
+    <script>
+        if (true) {
+            var varVariable = "I am var";
+        }
+        console.log(varVariable);
+        if (true) {
+            let letVariable = "I am let";
+            const constVariable = "I am const";
+            console.log(letVariable);
+            console.log(constVariable);
+        }
+        console.log(letVariable);
+        console.log(constVariable);
+    </script>
+
+</body>
+</html>

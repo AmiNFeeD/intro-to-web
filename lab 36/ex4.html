@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Understanding Closures</title>
+</head>
+<body>
+
+    <h1> Understanding Closures !</h1>
+
+    <script>
+       function counter() {
+          let count = 0;
+          return function() {
+              count++;
+              return count;
+          };
+       }
+
+       const count1 = counter();
+       console.log(count1());
+       console.log(count1());
+
+       const count2 = counter();
+       console.log(count2());
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval to Execute Code Repeatedly</title>
+</head>
+<body>
+
+    <h1>setInterval to Execute Code Repeatedly</h1>
+
+    <script>
+        function startCounter() {
+            let counter = 1;
+            let interval = setInterval(() => {
+                console.log("Counter:", counter);
+                if (counter === 5) {
+                    clearInterval(interval);
+                }
+                counter++;
+            }, 1000);
+        }
+
+        startCounter();
+    </script>
+
+</body>
+</html>

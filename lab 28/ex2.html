@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Property</title>
+    <style>
+        .container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border: 2px solid black;
+            margin-bottom: 20px;
+        }
+
+        .static {
+            position: static;
+            background-color: lightgray;
+        }
+
+        .relative {
+            position: relative;
+            left: 20px;
+            top: 10px;
+            background-color: lightblue;
+        }
+
+        .absolute {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            background-color: lightgreen;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: lightcoral;
+            padding: 10px;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 0;
+            background-color: yellow;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Static Position</h2>
+    <div class="container">
+        <div class="static">I am static</div>
+    </div>
+
+    <h2>Relative Position</h2>
+    <div class="container">
+        <div class="relative">I am relative</div>
+    </div>
+
+    <h2>Absolute Position</h2>
+    <div class="container">
+        <div class="absolute">I am absolute</div>
+    </div>
+
+    <h2>Fixed Position</h2>
+    <div class="fixed">I am fixed</div>
+
+    <h2>Sticky Position (Scroll Down)</h2>
+    <div class="sticky">I am sticky</div>
+
+    <p>Scroll down to see how the sticky position works.</p>
+    <p style="height: 1500px;"></p>
+
+</body>
+</html>
