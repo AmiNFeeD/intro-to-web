@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label, input, button {
+            display: block;
+            margin: 10px 0;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            border-color: red;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter name">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter email">
+        <label for="age">Age:</label>
+        <input type="text" id="age" placeholder="Enter age">
+        <button type="submit">Submit</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("userForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let age = document.getElementById("age").value;
+
+            let nameInput = document.getElementById("name");
+            let emailInput = document.getElementById("email");
+            let ageInput = document.getElementById("age");
+            let resultDiv = document.getElementById("result");
+
+            nameInput.classList.remove("error");
+            emailInput.classList.remove("error");
+            ageInput.classList.remove("error");
+            resultDiv.innerText = "";
+
+            let errors = [];
+            let emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+            if (name.trim() === "") {
+                errors.push("Name is required");
+                nameInput.classList.add("error");
+            }
+            if (email.trim() === "") {
+                errors.push("Email is required");
+                emailInput.classList.add("error");
+            } else if (!emailPattern.test(email)) {
+                errors.push("Invalid email format!");
+                emailInput.classList.add("error");
+            }
+            if (age.trim() === "") {
+                errors.push("Age is required");
+                ageInput.classList.add("error");
+            } else if (isNaN(age)) {
+                errors.push("Age must be a number!");
+                ageInput.classList.add("error");
+            } else {
+                let ageNum = parseFloat(age);
+                if (ageNum <= 0 || ageNum > 120) {
+                    errors.push("Age must be between 1 and 120!");
+                    ageInput.classList.add("error");
+                }
+            }
+
+            if (errors.length > 0) {
+                alert(errors.join("\n"));
+                return;
+            }
+
+            resultDiv.innerText = "Form submitted successfully!";
+            resultDiv.style.color = "green";
+        });
+    </script>
+</body>
+</html>

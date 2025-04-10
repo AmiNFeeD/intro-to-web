@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Change Style</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        p {
+            margin: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <p id="text">Click the button to change my style!</p>
+    <button id="changeStyle">Change Style</button>
+
+    <script>
+        let button = document.getElementById("changeStyle");
+        let text = document.getElementById("text");
+        let isStyled = false;
+
+        button.onclick = function() {
+            if (!isStyled) {
+                text.style.color = "white";
+                text.style.backgroundColor = "black";
+                text.style.fontSize = "24px";
+                isStyled = true;
+            } else {
+                text.style.color = "black";
+                text.style.backgroundColor = "transparent";
+                text.style.fontSize = "16px";
+                isStyled = false;
+            }
+        };
+    </script>
+</body>
+</html>

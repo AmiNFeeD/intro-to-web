@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 2: Fetch Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .post-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .post-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post-card h3 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+        .post-card p {
+            margin: 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <div id="postContainer" class="post-container"></div>
+
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(response => response.json())
+            .then(data => {
+                let container = document.getElementById("postContainer");
+                data.slice(0, 5).forEach(post => {
+                    let card = document.createElement("div");
+                    card.className = "post-card";
+                    card.innerHTML = `<h3>${post.title}</h3><p>${post.body}</p>`;
+                    container.appendChild(card);
+                });
+            });
+    </script>
+</body>
+</html>

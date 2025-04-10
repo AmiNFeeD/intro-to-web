@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blinking Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        p {
+            font-size: 24px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: red;
+            transition: color 0.3s ease;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button.stop {
+            background-color: #f44336;
+        }
+        button.stop:hover {
+            background-color: #da190b;
+        }
+    </style>
+</head>
+<body>
+    <p id="blinkText">This text will blink</p>
+    <button id="startButton">Start Blinking</button>
+    <button id="stopButton" class="stop">Stop Blinking</button>
+
+    <script>
+        let text = document.getElementById("blinkText");
+        let startButton = document.getElementById("startButton");
+        let stopButton = document.getElementById("stopButton");
+        let interval = null;
+
+        startButton.onclick = function() {
+            if (!interval) {
+                interval = setInterval(() => {
+                    text.style.color = text.style.color === "red" ? "blue" : "red";
+                }, 1000);
+            }
+        };
+
+        stopButton.onclick = function() {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+            }
+        };
+    </script>
+</body>
+</html>

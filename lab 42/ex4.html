@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Number Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label, input, button {
+            display: block;
+            margin: 10px 0;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            border-color: red;
+        }
+        #message {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="ageForm" onsubmit="return validateNumber(event)">
+        <label for="age">Enter Age:</label>
+        <input type="text" id="age" placeholder="Enter age">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="message"></div>
+
+    <script>
+        function validateNumber(event) {
+            event.preventDefault();
+
+            let age = document.getElementById("age").value;
+            let ageInput = document.getElementById("age");
+            let messageDiv = document.getElementById("message");
+
+            ageInput.classList.remove("error");
+            messageDiv.innerText = "";
+
+            let errors = [];
+            if (age.trim() === "") {
+                errors.push("Age is required");
+                ageInput.classList.add("error");
+            } else if (isNaN(age)) {
+                errors.push("Please enter a valid number!");
+                ageInput.classList.add("error");
+            } else {
+                let ageNum = parseFloat(age);
+                if (ageNum <= 0 || ageNum > 120) {
+                    errors.push("Age must be between 1 and 120!");
+                    ageInput.classList.add("error");
+                }
+            }
+
+            if (errors.length > 0) {
+                alert(errors.join("\n"));
+                return false;
+            } else {
+                messageDiv.innerText = "Age is valid! Form submitted successfully!";
+                messageDiv.style.color = "green";
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Empty Field Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label, input, button {
+            display: block;
+            margin: 10px 0;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            border-color: red;
+        }
+        #message {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm" onsubmit="return validateForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter name">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter email">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="message"></div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+
+            let nameInput = document.getElementById("name");
+            let emailInput = document.getElementById("email");
+            let messageDiv = document.getElementById("message");
+
+            nameInput.classList.remove("error");
+            emailInput.classList.remove("error");
+            messageDiv.innerText = "";
+
+            let errors = [];
+            if (name.trim() === "") {
+                errors.push("Name is required");
+                nameInput.classList.add("error");
+            }
+            if (email.trim() === "") {
+                errors.push("Email is required");
+                emailInput.classList.add("error");
+            }
+
+            if (errors.length > 0) {
+                alert(errors.join("\n"));
+                return false;
+            } else {
+                messageDiv.innerText = "Form submitted successfully!";
+                messageDiv.style.color = "green";
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        p {
+            margin: 20px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+        .highlight {
+            color: white;
+            background-color: blue;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid darkblue;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <title>Toggle Class</title>
+</head>
+<body>
+    <p id="text">Click the button to highlight me!</p>
+    <button id="toggleClass">Toggle Highlight</button>
+
+    <script>
+        let button = document.getElementById("toggleClass");
+        let text = document.getElementById("text");
+
+        button.onclick = function() {
+            text.classList.toggle("highlight");
+            if (text.classList.contains("highlight")) {
+                button.innerText = "Remove Highlight";
+            } else {
+                button.innerText = "Toggle Highlight";
+            }
+        };
+    </script>
+</body>
+</html>

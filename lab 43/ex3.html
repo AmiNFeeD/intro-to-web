@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fade Out Effect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        p {
+            margin: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.1s ease;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <p id="fadeText">This text will fade out...</p>
+    <button id="fadeButton">Fade Out</button>
+
+    <script>
+        let button = document.getElementById("fadeButton");
+        let text = document.getElementById("fadeText");
+        let isFaded = false;
+
+        button.onclick = function() {
+            button.disabled = true;
+            let opacity = isFaded ? 0 : 1;
+            let targetOpacity = isFaded ? 1 : 0;
+
+            function fade() {
+                if (isFaded && opacity < targetOpacity) {
+                    opacity += 0.1;
+                    text.style.opacity = opacity;
+                    setTimeout(fade, 100);
+                } else if (!isFaded && opacity > targetOpacity) {
+                    opacity -= 0.1;
+                    text.style.opacity = opacity;
+                    setTimeout(fade, 100);
+                } else {
+                    button.disabled = false;
+                    isFaded = !isFaded;
+                    button.innerText = isFaded ? "Fade In" : "Fade Out";
+                }
+            }
+
+            fade();
+        };
+    </script>
+</body>
+</html>

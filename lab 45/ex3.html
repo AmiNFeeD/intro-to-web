@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 3: Fetch Random Joke</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Joke Generator</h1>
+    <button onclick="fetchJoke()">Get Joke</button>
+    <p id="jokeText">Click the button to get a joke!</p>
+
+    <script>
+        function fetchJoke() {
+            fetch("https://official-joke-api.appspot.com/random_joke")
+                .then(response => response.json())
+                .then(data => {
+                    let jokeText = document.getElementById("jokeText");
+                    jokeText.innerText = `${data.setup} ${data.punchline}`;
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 1: Basic Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <div class="gallery">
+        <img src="https://via.placeholder.com/300x200?text=Image+1" alt="Image 1">
+        <img src="https://via.placeholder.com/300x200?text=Image+2" alt="Image 2">
+        <img src="https://via.placeholder.com/300x200?text=Image+3" alt="Image 3">
+        <img src="https://via.placeholder.com/300x200?text=Image+4" alt="Image 4">
+        <img src="https://via.placeholder.com/300x200?text=Image+5" alt="Image 5">
+    </div>
+</body>
+</html>
