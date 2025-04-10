@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Task Manager</h2>
+
+    <form action="{{ url_for('main.add_task') }}" method="post" class="mb-3">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <div class="input-group">
+            <input type="text" name="title" class="form-control" placeholder="Title" required>
+            <input type="text" name="description" class="form-control" placeholder="Description (Optional)">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+
+    <ul class="list-group">
+        {% for task in tasks %}
+        <li class="list-group-item d-flex justify-content-between align-items-center
+            {% if task.completed %}list-group-item-success{% endif %}">
+            <div>
+                <strong>{{ task.title }}</strong> - {{ task.description or "Без описания" }}
+            </div>
+            <div>
+                <a href="{{ url_for('main.complete_task', task_id=task.id) }}"
+                    class="btn btn-sm {% if task.completed %}btn-secondary{% else %}btn-success{% endif %}">
+                    {% if task.completed %}Done{% else %}Complete{% endif %}
+                </a>
+                <a href="{{ url_for('main.delete_task', task_id=task.id) }}" class="btn btn-sm btn-danger">Delete</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
