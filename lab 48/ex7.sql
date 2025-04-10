@@ -1,0 +1,2 @@
+ALTER TABLE products ALTER COLUMN price TYPE INTEGER;
+SELECT price FROM products;
