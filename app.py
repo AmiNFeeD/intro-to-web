@@ -24,7 +24,7 @@ def history():
 @socketio.on("newuser")
 def on_newuser(username):
     emit("history", db.latest_messages()[::-1], to=request.sid)
-    emit("update", f"{username} joined", broadcast=True)
+    emit("update", f"{username} joined", broadcast=True, include_self=False)
 
 @socketio.on("chat")
 def on_chat(data):

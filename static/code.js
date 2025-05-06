@@ -25,6 +25,7 @@
         uname = username;
         app.querySelector(".join-screen").classList.remove("active");
         app.querySelector(".chat-screen").classList.add("active");
+        app.querySelector(".chat-screen .messages").innerHTML = "";
     });
 
     app.querySelector(".chat-screen #send-message").addEventListener("click", function (){
