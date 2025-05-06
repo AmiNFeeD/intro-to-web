@@ -16,11 +16,17 @@
         .addEventListener("keyup", e => {
             if (e.key === "Enter") app.querySelector(".chat-screen #send-message").click();
         });
-    app.querySelector(".join-screen #join-user").addEventListener("click", function (){
+    app.querySelector(".join-screen #join-user").addEventListener("click", async function (){
         let username = app.querySelector(".join-screen #username").value;
         if(username.length == 0){
             return;
         }
+
+        const response = await fetch("/history")
+        const history = await response.json()
+
+        history.forEach(message => renderMessage((message.username === uname) ? "my" : "other", message))
+
         socket.emit("newuser",username);
 
         uname = username;
@@ -34,10 +40,6 @@
         if(message.length == 0){
             return;
         }
-        renderMessage("my",{
-            username:uname,
-            text:message
-        });
         socket.emit("chat",{
             username:uname,
             text:message

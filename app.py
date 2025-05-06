@@ -16,20 +16,18 @@ def clear_history():
 def index():
     return render_template("index.html")
 
-
 @app.route("/history")
 def history():
-    return jsonify(db.latest_messages())
+    return jsonify(db.latest_messages()[::-1])
 
 @socketio.on("newuser")
 def on_newuser(username):
-    emit("history", db.latest_messages()[::-1], to=request.sid)
     emit("update", f"{username} joined", broadcast=True, include_self=True)
 
 @socketio.on("chat")
 def on_chat(data):
     db.save_message(data["username"], data["text"])
-    emit("chat", data, broadcast=True, include_self=False)
+    emit("chat", data, broadcast=True, include_self=True)
 
 @socketio.on("exituser")
 def on_exit(username):
