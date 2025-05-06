@@ -22,12 +22,11 @@
             return;
         }
         socket.emit("newuser",username);
+
         uname = username;
+
         app.querySelector(".join-screen").classList.remove("active");
         app.querySelector(".chat-screen").classList.add("active");
-        app.querySelector(".chat-screen .messages").innerHTML = "";
-
-        renderMessage("update", "You joined");
     });
 
     app.querySelector(".chat-screen #send-message").addEventListener("click", function (){
@@ -51,13 +50,14 @@
        window.location.href = window.location.href;
     });
 
-    socket.on("update",function (update){
-       renderMessage("update",update);
+    socket.on("update", function (update){
+       renderMessage("update", update);
     });
 
     socket.on("chat",function (message){
-       renderMessage("other",message);
+       renderMessage("other", message);
     });
+
     socket.on("history", function (msgs) {
     msgs.forEach(m => {
         const type = (m.username === uname) ? "my" : "other";
@@ -91,7 +91,7 @@
         } else if(type == "update"){
             let el = document.createElement("div");
             el.setAttribute("class", "update");
-            el.innerText = message;
+            el.innerText = message === `${uname} joined` ? "You joined" : message;
             messageContainer.appendChild(el);
         }
         //scroll chat
