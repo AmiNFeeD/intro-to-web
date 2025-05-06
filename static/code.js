@@ -8,7 +8,14 @@
         fetch("/clear", { method: "POST" })
             .then(() => location.reload());
     });
-
+    app.querySelector(".join-screen #username")
+        .addEventListener("keyup", e => {
+            if (e.key === "Enter") app.querySelector(".join-screen #join-user").click();
+         });
+    app.querySelector(".chat-screen #message-input")
+        .addEventListener("keyup", e => {
+            if (e.key === "Enter") app.querySelector(".chat-screen #send-message").click();
+        });
     app.querySelector(".join-screen #join-user").addEventListener("click", function (){
         let username = app.querySelector(".join-screen #username").value;
         if(username.length == 0){
