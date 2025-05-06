@@ -20,7 +20,7 @@ A minimal real‑time chat app built for the course project.
 
 ```bash
 git clone --single-branch -b Chatroom https://github.com/AmiNFeeD/intro-to-web.git
-cd chatroomych
+cd intro-to-web
 python -m venv env && source env/bin/activate  # Windows: env\Scripts\activate
 pip install -r requirements.txt
 python app.py
