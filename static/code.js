@@ -26,6 +26,8 @@
         app.querySelector(".join-screen").classList.remove("active");
         app.querySelector(".chat-screen").classList.add("active");
         app.querySelector(".chat-screen .messages").innerHTML = "";
+
+        renderMessage("update", "You joined");
     });
 
     app.querySelector(".chat-screen #send-message").addEventListener("click", function (){
