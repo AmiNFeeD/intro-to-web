@@ -8,6 +8,7 @@ A minimal real‑time chat app built for the course project.
 - Message history (last 50 messages) loaded on join
 - Clear‑history button (dev‑only)
 - SQLite persistence (`chat.db`)
+- Typing indicator
 
 ## Tech stack
 | Layer | Library |
